@@ -20,4 +20,12 @@ class Proyecto1 {
     System.out.println(datosPais.get(0).pais);
 
   }
+  public static double promedioAccesoAgua(List<Pais> listaPaises){
+        int totalPaises = listaPaises.size();
+        double suma = 0;
+        for (int i = 1; i < totalPaises; i++) {
+            suma += listaPaises.get(i).porcentajeAccesoAgua;
+        }
+        return suma / totalPaises;
+        }
 }
