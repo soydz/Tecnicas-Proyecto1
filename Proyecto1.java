@@ -16,18 +16,20 @@ class Proyecto1 {
     listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
 
 
-  
-    //System.out.println(datosPais.get(0).pais);
+    System.out.println(promedioAccesoAgua(listaPaises));
 
   }
-  /*
+
+  
+  //Metodos
   public static double promedioAccesoAgua(List<Pais> listaPaises){
         int totalPaises = listaPaises.size();
         double suma = 0;
         for (int i = 1; i < totalPaises; i++) {
-            suma += listaPaises.get(i).porcentajeAccesoAgua;
+            suma += listaPaises.get(i).porcentajeAccesoAguaPotable;
         }
         return suma / totalPaises;
         }
-        */
+
 }
+
