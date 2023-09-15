@@ -13,7 +13,7 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     listaPaises.add( new Pais("Chile", 17574003, 92.6, 958100, 3200, 98, 48.9) );
     listaPaises.add( new Pais("Venezuela", 32605423, 24.5, 10800000, 1207, 2100, 14.8) );
     listaPaises.add( new Pais("Haití", 11488792, 16.3, 950000, 420, 950, 5.2) );
-    listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
+    //listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
     /*
     listaPaises.add( new Pais("Costa Rica", 94.7, 45000, 120, 85, 240));
     listaPaises.add( new Pais("Cuba", 120000, 89.1, 320, 280, 870));
@@ -34,6 +34,7 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     promedioAccesoAgua(listaPaises);
     paisMasHospitalesPorCienMilPersonas(listaPaises);
     porcentajeHospitalesProblemas(listaPaises);
+    medianaPoblacion(listaPaises);
 
   }
 
@@ -71,6 +72,7 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     return pais + " tiene " + numeroHospitales + " hospitales por cada 100 000 habitantes, siendo el que mas tiene en latinoamerica";
   }
 
+
   public static ArrayList porcentajeHospitalesProblemas(List<Pais> listaPaises){
     record dato(String pais, Double porcentajeHospitales){};
     ArrayList<dato> lista = new ArrayList<dato>();
@@ -81,6 +83,50 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
       lista.add( new dato(i.pais, porcentaje) );
     }
     return lista;
+  }
+
+
+  public static Double medianaPoblacion(List<Pais> listaPaises){
+    ArrayList<Integer> poblacion = new ArrayList<Integer>();
+    
+    for(Pais i:listaPaises){
+      poblacion.add(i.poblacion);
+    }
+
+    ArrayList<Integer> poblacionOrdenada = (ArrayList<Integer>) ordenarDatos(poblacion).clone();
+
+    if((poblacionOrdenada.size() % 2) == 0){
+      int dato = poblacionOrdenada.size() / 2; 
+      Integer mediana = (poblacionOrdenada.get(dato - 1) + poblacionOrdenada.get(dato)) / 2;
+
+      return Double.valueOf(mediana);
+
+    }else {
+      int dato = (int)Math.floor(poblacionOrdenada.size() / 2);
+      Integer mediana = poblacionOrdenada.get(dato);
+
+      return Double.valueOf(mediana);
+    }
+  }
+
+
+  public static ArrayList ordenarDatos(ArrayList<Integer> lista){
+    ArrayList<Integer> listaOrdenada = lista;
+
+    for(int i = 1; i < lista.size(); i++){
+
+      for(int j = 0; j < (lista.size()) - i; j++){
+        
+        if(listaOrdenada.get(j) > listaOrdenada.get((j+1))){
+          Integer num = listaOrdenada.get((j+1));
+          listaOrdenada.set((j+1), listaOrdenada.get(j));
+          listaOrdenada.set(j, num);
+        }
+      }    
+    }
+
+      return listaOrdenada;
+
   }
 
 
