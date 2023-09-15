@@ -14,13 +14,6 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     listaPaises.add( new Pais("Venezuela", 32605423, 24.5, 10800000, 1207, 2100, 14.8) );
     listaPaises.add( new Pais("Haití", 11488792, 16.3, 950000, 420, 950, 5.2) );
     listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
-    listaPaises.add( new Pais("Colombia", 50340000, 72.3, 4500000, 3500,900, 15.7) );
-    listaPaises.add( new Pais("Argentina", 46044703, 88.6, 1400000, 4200, 150, 32.1) );
-    listaPaises.add( new Pais("Bolivia", 11216000, 61.9, 1600000, 1021,400, 9.7) );
-    listaPaises.add( new Pais("Chile", 17574003, 92.6, 958100, 3200, 98, 48.9) );
-    listaPaises.add( new Pais("Venezuela", 32605423, 24.5, 10800000, 1207, 2100, 14.8) );
-    listaPaises.add( new Pais("Haití", 11488792, 16.3, 950000, 420, 950, 5.2) );
-    listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
     listaPaises.add( new Pais("Costa Rica", 5100000, 94.7, 280000, 900, 240, 11.3));
     listaPaises.add( new Pais("Cuba", 11200000, 89.1, 400000, 700, 250, 13.3));
     listaPaises.add( new Pais("Ecuador", 17800000, 79.6,  1100000, 1650, 380, 14.2));
@@ -34,15 +27,28 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     listaPaises.add( new Pais("Perú", 33700000, 84.7,  1700000, 3807, 1230, 16.));
     listaPaises.add( new Pais("República Dominicana", 11100000, 81.5, 960000, 960, 287, 13.9));
     listaPaises.add( new Pais("Guayana Francesa", 300000, 88.7, 30000, 40, 23, 7.3));
-  
-
-    promedioAccesoAgua(listaPaises);
-    paisMasHospitalesPorCienMilPersonas(listaPaises);
+    
+    //Promedio de de acceso al agua por país
+    double   promedioAgua = promedioAccesoAgua(listaPaises);
+    System.out.println("Porcentaje de la población con acceso al agua potable "+promedioAgua+" %");
+    
+    //País con más hospitales por cada 100.000 mil habitantes
+    String paisconMayorNhospitalXcadaCienmilH=  paisMasHospitalesPorCienMilPersonas(listaPaises);
+    System.out.println(paisconMayorNhospitalXcadaCienmilH);
+    
+    //País con más acceso al agua 
+    String paisconMayoraccesoalAgua=  paisMayorAccesoAgua(listaPaises);
+    System.out.println(paisconMayoraccesoalAgua);
+    
+    //País con menos acceso al agua 
+    String paisconMenosraccesoalAgua=  paisMenosAccesoAgua(listaPaises);
+    System.out.println(paisconMenosraccesoalAgua);
+    
     porcentajeHospitalesProblemas(listaPaises);
-
+    
+    
+    
   }
-
-  
 
  
   //Metodos
@@ -54,6 +60,43 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
         }
         return suma / totalPaises;
         }
+  
+  public static String paisMayorAccesoAgua(List<Pais> listaPaises){
+      String pais = "";
+      double porcentajeAccesoAguaPotable = 0;
+      
+        for(Pais i: listaPaises){
+            double a = i.porcentajeAccesoAguaPotable;
+        
+            if(a>porcentajeAccesoAguaPotable){
+                pais = i.pais;
+                porcentajeAccesoAguaPotable = a;
+            }
+        }
+       
+        return" El con país mayor acceso al agua potable es: " + pais + " con el: " + porcentajeAccesoAguaPotable + "  % ";
+        }
+  
+  public static String paisMenosAccesoAgua(List<Pais> listaPaises){
+      String pais = "";
+      Pais accesoAguaPotables= listaPaises.get(0);
+      double porcentajeAccesoAguaPotable = accesoAguaPotables.porcentajeAccesoAguaPotable;
+      
+        for(Pais i: listaPaises){
+            double a = i.porcentajeAccesoAguaPotable;
+            
+            if(a < porcentajeAccesoAguaPotable){
+                pais = i.pais;
+                porcentajeAccesoAguaPotable = a;
+            }
+            
+          
+        }
+       
+        return" El con país menor acceso al agua potable es: " + pais + " con el: " + porcentajeAccesoAguaPotable + "  % ";
+        }
+  
+  
 
 
   public static String paisMasHospitalesPorCienMilPersonas(List<Pais> listaPaises){
