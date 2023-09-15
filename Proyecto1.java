@@ -14,22 +14,27 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     listaPaises.add( new Pais("Venezuela", 32605423, 24.5, 10800000, 1207, 2100, 14.8) );
     listaPaises.add( new Pais("Haití", 11488792, 16.3, 950000, 420, 950, 5.2) );
     listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
-    /*
-    listaPaises.add( new Pais("Costa Rica", 94.7, 45000, 120, 85, 240));
-    listaPaises.add( new Pais("Cuba", 120000, 89.1, 320, 280, 870));
-    listaPaises.add( new Pais("Ecuador", 750000, 79.6,  1800, 1300, 5600));
-    listaPaises.add( new Pais("El Salvador", 95000,86.8, 250, 180, 1200));
-    listaPaises.add( new Pais("Guatemala", 1100000, 72.9, 670, 550, 4200));
-    listaPaises.add( new Pais("Honduras", 680000,76.2,  520, 430, 3200));
-    listaPaises.add( new Pais("México", 3200000, 89.9, 3500, 2600, 9800));
-    listaPaises.add( new Pais("Nicaragua", 540000, 66.5, 780, 650, 4800));
-    listaPaises.add( new Pais("Panamá", 78000, 92.3, 190, 120, 360));
-    listaPaises.add( new Pais("Paraguay", 610000, 68.4, 890, 750, 5800));
-    listaPaises.add( new Pais("Perú", 1800000, 84.7,  2400, 1900, 7500));
-    listaPaises.add( new Pais("República Dominicana", 350000, 81.5, 620, 550, 1800));
-    listaPaises.add( new Pais("Guayana Francesa", 50000,88.7, 50, 40, 120));
-        
-*/
+    listaPaises.add( new Pais("Colombia", 50340000, 72.3, 4500000, 3500,900, 15.7) );
+    listaPaises.add( new Pais("Argentina", 46044703, 88.6, 1400000, 4200, 150, 32.1) );
+    listaPaises.add( new Pais("Bolivia", 11216000, 61.9, 1600000, 1021,400, 9.7) );
+    listaPaises.add( new Pais("Chile", 17574003, 92.6, 958100, 3200, 98, 48.9) );
+    listaPaises.add( new Pais("Venezuela", 32605423, 24.5, 10800000, 1207, 2100, 14.8) );
+    listaPaises.add( new Pais("Haití", 11488792, 16.3, 950000, 420, 950, 5.2) );
+    listaPaises.add( new Pais("Uruguay", 3286314, 97.9, 410, 3130, 45, 21.4) );
+    listaPaises.add( new Pais("Costa Rica", 5100000, 94.7, 280000, 900, 240, 11.3));
+    listaPaises.add( new Pais("Cuba", 11200000, 89.1, 400000, 700, 250, 13.3));
+    listaPaises.add( new Pais("Ecuador", 17800000, 79.6,  1100000, 1650, 380, 14.2));
+    listaPaises.add( new Pais("El Salvador", 6300000, 86.8, 600000, 619, 320, 9.2));
+    listaPaises.add( new Pais("Guatemala", 17100000, 72.9, 7200000, 1300, 430, 12.3));
+    listaPaises.add( new Pais("Honduras", 10200000, 76.2,  900000, 1716, 320, 11.3));
+    listaPaises.add( new Pais("México", 126200000, 89.9, 9300000, 4900, 1230, 16.2));
+    listaPaises.add( new Pais("Nicaragua", 6850000, 66.5, 740000, 1343, 410, 10.6));
+    listaPaises.add( new Pais("Panamá", 4350000, 92.3, 380000, 209, 89, 17.1));
+    listaPaises.add( new Pais("Paraguay", 6700000, 68.4, 1200000, 217, 98, 11.2));
+    listaPaises.add( new Pais("Perú", 33700000, 84.7,  1700000, 3807, 1230, 16.));
+    listaPaises.add( new Pais("República Dominicana", 11100000, 81.5, 960000, 960, 287, 13.9));
+    listaPaises.add( new Pais("Guayana Francesa", 300000, 88.7, 30000, 40, 23, 7.3));
+  
 
     promedioAccesoAgua(listaPaises);
     paisMasHospitalesPorCienMilPersonas(listaPaises);
