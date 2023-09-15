@@ -29,24 +29,22 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     listaPaises.add( new Pais("Guayana Francesa", 300000, 88.7, 30000, 40, 23, 7.3));
     
     //Promedio de de acceso al agua por país
-    double   promedioAgua = promedioAccesoAgua(listaPaises);
-    System.out.println("Porcentaje de la población con acceso al agua potable "+promedioAgua+" %");
+    promedioAccesoAgua(listaPaises);
     
     //País con más hospitales por cada 100.000 mil habitantes
-    String paisconMayorNhospitalXcadaCienmilH=  paisMasHospitalesPorCienMilPersonas(listaPaises);
-    System.out.println(paisconMayorNhospitalXcadaCienmilH);
+    paisMasHospitalesPorCienMilPersonas(listaPaises);
     
     //País con más acceso al agua 
-    String paisconMayoraccesoalAgua=  paisMayorAccesoAgua(listaPaises);
-    System.out.println(paisconMayoraccesoalAgua);
-    
+    paisMayorAccesoAgua(listaPaises);
+   
     //País con menos acceso al agua 
-    String paisconMenosraccesoalAgua=  paisMenosAccesoAgua(listaPaises);
-    System.out.println(paisconMenosraccesoalAgua);
+   paisMenosAccesoAgua(listaPaises);
     
+    // Porcentaje de Hospitales e nProblemas
     porcentajeHospitalesProblemas(listaPaises);
-    
-    
+    //porcentage de personas sin acceso al agua por país
+    porcentajePaisPersonasinAccesoAguaP(listaPaises);
+  
     
   }
 
@@ -125,6 +123,19 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
 
     for(Pais i: listaPaises){
       Double porcentaje = (Double.valueOf(i.hospitalesProblemasDeSaneamiento) * 100) / i.numeroHospitales;
+
+      lista.add( new dato(i.pais, porcentaje) );
+    }
+    return lista;
+  }
+
+  public static ArrayList porcentajePaisPersonasinAccesoAguaP(List<Pais> listaPaises){
+    record dato(String pais, Double personasSinAguaPotablePorcentaje){};
+    ArrayList<dato> lista = new ArrayList<dato>();
+    double porcentajeGlobal = 100;
+
+    for(Pais i: listaPaises){
+      Double porcentaje = (Double.valueOf(porcentajeGlobal - i.porcentajeAccesoAguaPotable));
 
       lista.add( new dato(i.pais, porcentaje) );
     }
