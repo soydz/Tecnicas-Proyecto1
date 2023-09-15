@@ -49,6 +49,12 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     
     //porcentage de personas sin acceso al agua por país
     porcentajePaisPersonasinAccesoAguaP(listaPaises);
+
+    //media de la poblacion afectada por las sequias de agua
+    double media = mediaPoblacionAfectadaSequias(listaPaises);
+
+    // varianza de la poblacion afectada por las sequias de agua
+    varianzaPoblacionAfectadaSequias(listaPaises, media);
     
   }
 
@@ -187,9 +193,35 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
         }
       }    
     }
-
       return listaOrdenada;
 
+  }
+
+
+  public static double mediaPoblacionAfectadaSequias(List<Pais> listaPaises){
+    double suma = 0;
+    double media = 0;
+    for(Pais i:listaPaises){
+      suma += i.poblacionAfectadaSequias;
+      media = suma / listaPaises.size();
+    }
+
+    return media;
+  }
+
+
+  public static double varianzaPoblacionAfectadaSequias(List<Pais> listaPaises ,double media){
+    double sumaCuadrados = 0;
+    double varianza = 0;
+
+    for(Pais i:listaPaises){
+      double diferencia = i.poblacionAfectadaSequias - media;
+      sumaCuadrados += diferencia * diferencia;
+    }
+
+    varianza = sumaCuadrados / listaPaises.size();
+
+    return varianza;
   }
 
 }
