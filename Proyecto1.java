@@ -42,9 +42,12 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     
     // Porcentaje de Hospitales e nProblemas
     porcentajeHospitalesProblemas(listaPaises);
+    
+    // Mediana de la poblacion de los paises latinoamericanos
+    medianaPoblacion(listaPaises);
+    
     //porcentage de personas sin acceso al agua por país
     porcentajePaisPersonasinAccesoAguaP(listaPaises);
-  
     
   }
 
@@ -117,6 +120,7 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
     return pais + " tiene " + numeroHospitales + " hospitales por cada 100 000 habitantes, siendo el que mas tiene en latinoamerica";
   }
 
+
   public static ArrayList porcentajeHospitalesProblemas(List<Pais> listaPaises){
     record dato(String pais, Double porcentajeHospitales){};
     ArrayList<dato> lista = new ArrayList<dato>();
@@ -140,6 +144,50 @@ record Pais(String pais,Integer poblacion,Double porcentajeAccesoAguaPotable,Int
       lista.add( new dato(i.pais, porcentaje) );
     }
     return lista;
+  }
+
+
+  public static Double medianaPoblacion(List<Pais> listaPaises){
+    ArrayList<Integer> poblacion = new ArrayList<Integer>();
+    
+    for(Pais i:listaPaises){
+      poblacion.add(i.poblacion);
+    }
+
+    ArrayList<Integer> poblacionOrdenada = (ArrayList<Integer>) ordenarDatos(poblacion).clone();
+
+    if((poblacionOrdenada.size() % 2) == 0){
+      int dato = poblacionOrdenada.size() / 2; 
+      Integer mediana = (poblacionOrdenada.get(dato - 1) + poblacionOrdenada.get(dato)) / 2;
+
+      return Double.valueOf(mediana);
+
+    }else {
+      int dato = (int)Math.floor(poblacionOrdenada.size() / 2);
+      Integer mediana = poblacionOrdenada.get(dato);
+
+      return Double.valueOf(mediana);
+    }
+  }
+
+
+  public static ArrayList ordenarDatos(ArrayList<Integer> lista){
+    ArrayList<Integer> listaOrdenada = lista;
+
+    for(int i = 1; i < lista.size(); i++){
+
+      for(int j = 0; j < (lista.size()) - i; j++){
+        
+        if(listaOrdenada.get(j) > listaOrdenada.get((j+1))){
+          Integer num = listaOrdenada.get((j+1));
+          listaOrdenada.set((j+1), listaOrdenada.get(j));
+          listaOrdenada.set(j, num);
+        }
+      }    
+    }
+
+      return listaOrdenada;
+
   }
 
 
